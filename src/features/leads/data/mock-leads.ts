@@ -118,7 +118,7 @@ export const mockLeads: Lead[] = [
     employeeRange: '51-200',
     outreachStatus: 'Meeting Booked',
     tags: ['Expansion', 'North America'],
-    notes: 'Evaluating LeadPilot for two GTM teams. Interested in analytics and role-based access.',
+    notes: 'Evaluating Porthen for two GTM teams. Interested in analytics and role-based access.',
     timeline: [
       { label: 'Customer intro received', time: 'May 04, 08:05' },
       { label: 'Qualified on ICP fit', time: 'May 04, 13:26' },
