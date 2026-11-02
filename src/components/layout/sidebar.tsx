@@ -24,7 +24,7 @@ export function Sidebar({ onNavigate, isCollapsed = false }: SidebarProps) {
     <aside className="flex h-full w-full flex-col border-r border-slate-800 bg-surface-muted p-4">
       <div className="mb-8 px-2">
         <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
-          LeadPilot
+          Porthen
         </p>
         {!isCollapsed ? (
           <p className="mt-1 text-lg font-semibold text-slate-100">
