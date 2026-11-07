@@ -13,8 +13,9 @@ export function Navbar({
   onToggleDesktopSidebar,
   isSidebarCollapsed,
 }: NavbarProps) {
-  const { isAuthenticated, signIn, signOut, userName } = useAuthStore();
+  const { user, signOut } = useAuthStore();
 
+  const userName = user?.user_metadata?.full_name || user?.email || "Account";
   return (
     <header className="sticky top-0 z-20 border-b border-slate-800 bg-surface/85 backdrop-blur">
       <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
@@ -53,8 +54,8 @@ export function Navbar({
             <p className="text-sm font-medium text-slate-100">{userName}</p>
             <p className="text-xs text-slate-500">Owner</p>
           </div>
-          <Button variant="ghost" onClick={isAuthenticated ? signOut : signIn}>
-            {isAuthenticated ? "Sign out" : "Sign in"}
+          <Button variant="ghost" onClick={() => void signOut()}>
+            Sign out
           </Button>
         </div>
       </div>
