@@ -8,7 +8,7 @@ Porthen is a modern SaaS sales intelligence and lead management dashboard design
 
 Porthen provides a centralized workspace for sales teams to manage leads and monitor pipeline performance through a clean, analytics-focused dashboard.
 
-Sign-in is backed by Supabase Auth. Each new user receives a personal workspace in Postgres. The dashboard, leads, analytics, and settings screens are available only to a signed-in user. Those screens still render local demo data.
+Sign-in is backed by Supabase Auth. Each new user receives a personal workspace in Postgres. The dashboard, leads, analytics, and settings screens are available only to a signed-in user. The leads page reads that user's owner-workspace leads from Supabase. The dashboard, analytics, and settings screens still render local demo data.
 
 ## Implemented
 
@@ -17,19 +17,19 @@ Sign-in is backed by Supabase Auth. Each new user receives a personal workspace 
 - Automatic profile, workspace, and owner-membership provisioning on signup
 - Workspace-owned `leads` rows, with `workspace_id` required
 - Row Level Security so authenticated members can reach only their workspace data
+- Leads page reads `public.leads` for the signed-in user's owner workspace
 - Versioned SQL migrations in `supabase/migrations`
 
 ## Frontend demo data
 
-These screens are implemented in the interface and still read data shipped with the app:
+These screens still read data shipped with the app:
 
-- Sales performance dashboard
-- Lead list, filters, and lead details
+- Sales performance dashboard, including its recent-leads list
 - Pipeline and analytics charts
-- Search interface for leads, companies, and campaigns
+- Header search
 - Settings screen
 
-The leads UI does not query `public.leads`.
+The leads page loads rows from `public.leads` for the signed-in user's owner workspace. Search, filters, and the details drawer on that page use the fetched rows. The page does not create, update, or delete leads.
 
 ## Tech Stack
 
@@ -150,7 +150,7 @@ npm run build
 
 ## Planned
 
-- Load and save leads from `public.leads` in the leads UI
+- Create, update, and delete leads from the leads page
 - Show the signed-in user's real workspace in settings
 - Add workspace invites and role-specific permissions beyond membership
 - Replace demo dashboard and analytics numbers with database reporting
